@@ -20,7 +20,7 @@
 }
 
 body {
-  background: var(--background);
+  background: url('/assets/qcsp-bg.svg');
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
