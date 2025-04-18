@@ -1,26 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-linear1: linear-gradient(to right, #A26CEF, #CBA3FF);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --text-h1: 48px;
+  --text-h2: 40px;
+  --text-h3: 32px;
+  --text-h4: 24px;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: #4949C9;
+  --color-secondary: #CBA3FF;
+  --color-tertiary: #4217BA;
+  --color-accent: #E5DB00;
 }
 
 body {
   background: url('/assets/qcsp-bg.svg');
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-family: var(--font-nunito-500), Arial, Helvetica, sans-serif;
 }
