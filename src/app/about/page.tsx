@@ -25,6 +25,7 @@ const about = () => {
     <div>
       <NavBar />
 
+
       {/* Header */}
       <div className='flex flex-col lg:flex-row items-center justify-between px-10 lg:px-30 mb-32 space-y-10 lg:space-y-0'>
         <motion.div
@@ -47,8 +48,10 @@ const about = () => {
         </motion.div>
       </div>
 
+
       {/* Main Content */}
       <div className='flex flex-col w-11/12 lg:w-3/4 space-y-60 mx-auto text-justify'>
+
 
         {/* About */}
         <motion.div className='flex flex-col space-y-5' variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -60,6 +63,7 @@ const about = () => {
             <button className='px-10 py-5 rounded-xl bg-tertiary font-bold cursor-pointer max-sm:text-xs max-sm:p-4' type="button">See our Team..</button>
           </div>
         </motion.div>
+
 
         {/* Connect Minds */}
         <motion.div
@@ -81,6 +85,7 @@ const about = () => {
             </div>
           </div>
         </motion.div>
+
 
         {/* Vision and Mission */}
         <motion.div
@@ -104,6 +109,7 @@ const about = () => {
           </div>
         </motion.div>
 
+
         {/* Partnership */}
         <motion.div
           className='flex flex-col-reverse lg:flex-row items-center justify-between space-y-10 lg:space-y-0 lg:space-x-32'
@@ -125,6 +131,7 @@ const about = () => {
           <Image src={"/assets/about-icon2.svg"} alt="logo" width={500} height={500} className='max-sm:w-50' />
         </motion.div>
 
+
         {/* Join Us and Contact Us */}
         <motion.div
           className='flex flex-col items-center justify-center space-y-10'
@@ -136,8 +143,8 @@ const about = () => {
           <h1 className='text-h1 font-bold text-accent text-center max-sm:text-xl'>Check our social and Contact us!</h1>
           <button className='text-black px-10 py-5 rounded-xl bg-amber-50 font-bold cursor-pointer max-sm:text-xs max-sm:p-4' type="button">Contact us</button>
         </motion.div>
-
       </div>
+
 
       <Footer />
     </div>
