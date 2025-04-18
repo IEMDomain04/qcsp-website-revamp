@@ -14,9 +14,11 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="w-full pl-15 md:px-30 py-4 flex justify-between items-center shadow-md relative z-50 max-sm:flex-row-reverse">
+    <nav className="w-full px-10 md:px-30 py-4 flex justify-between items-center shadow-md relative z-50 max-sm:flex-row-reverse">
       {/* Logo */}
-      <Image src="/assets/QCSP.svg" alt="Logo" width={400} height={100} />
+      <div className='max-sm:w-4/5'>
+        <Image src="/assets/QCSP.svg" alt="Logo" width={400} height={100} />
+      </div>
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex space-x-12">
