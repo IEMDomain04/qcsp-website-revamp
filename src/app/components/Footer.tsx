@@ -7,7 +7,6 @@ const socials = [
     href: '',
     src: '/assets/socials/fb.svg',
   },
-
   {
     name: 'Instagram',
     href: '',
@@ -18,12 +17,11 @@ const socials = [
     href: '',
     src: '/assets/socials/x-twitter.svg',
   },
-
   {
     name: 'YouTube',
     href: '',
     src: '/assets/socials/yt.svg',
-  }
+  },
 ]
 
 const footerLinks = [
@@ -32,7 +30,7 @@ const footerLinks = [
     href: '/',
   },
   {
-    name: 'Contacs',
+    name: 'Contacts',
     href: '/contacts',
   },
   {
@@ -47,42 +45,45 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <div className='flex justify-center items-center space-x-50 p-20 max-sm:flex-col bg-black'>
+    <div className='flex flex-wrap justify-center items-center gap-10 px-6 py-32 bg-black/50 text-white sm:px-12 md:px-20 lg:px-32 lg:space-x-32'>
 
-      <div className='w-4/12 space-y-20'>
-
-        <div>
-          <Image src={'/assets/QCSP.svg'} alt='logo' width={500} height={100} />
-          <p>A chapter of the global OneQuantum organization. A non-profit community about quantum technology.</p>
+      {/* Left Section */}
+      <div className='w-full md:w-1/2 lg:w-1/3 space-y-6'>
+        <div className='space-y-4'>
+          <Image src={'/assets/QCSP.svg'} alt='logo' width={200} height={200} />
+          <p className='text-sm sm:text-base leading-relaxed'>
+            A chapter of the global OneQuantum organization. A non-profit community about quantum technology.
+          </p>
         </div>
 
         <div className='space-y-3'>
-          <div className='flex space-x-10'>
+          <div className='flex gap-4'>
             {socials.map((social) => (
               <a key={social.name} href={social.href} target='_blank' rel='noopener noreferrer'>
-                <Image src={social.src} alt={social.name} width={30} height={30} />
+                <Image src={social.src} alt={social.name} width={24} height={24} />
               </a>
             ))}
           </div>
-          <p>@ 2025 QCSP PH. All rights reserved.</p>
+          <p className='text-xs sm:text-sm'>&copy; 2025 QCSP PH. All rights reserved.</p>
         </div>
-
       </div>
 
-      <div className='space-y-3'>
-        <h1 className='text-h4 font-bold'>Navigations</h1>
-        <div className='flex flex-col space-y-3'>
+      {/* Middle Section */}
+      <div className='w-full sm:w-auto space-y-4'>
+        <h2 className='text-lg sm:text-xl font-semibold'>Navigation</h2>
+        <div className='flex flex-col space-y-2 text-sm sm:text-base'>
           {footerLinks.map((link) => (
-            <a key={link.name} href={link.href} className="w-fit border-b border-transparent hover:border-yellow-400 hover:text-yellow-400 duration-300">
+            <a key={link.name} href={link.href} className='w-fit border-b border-transparent hover:border-yellow-400 hover:text-yellow-400 transition duration-300'>
               {link.name}
             </a>
           ))}
         </div>
       </div>
 
-      <div className='space-y-3'>
-      <h1 className='text-h4 font-bold'>Contact us</h1>
-        <div className='flex flex-col space-y-3'>
+      {/* Right Section */}
+      <div className='w-full sm:w-auto space-y-4'>
+        <h2 className='text-lg sm:text-xl font-semibold'>Contact Us</h2>
+        <div className='flex flex-col space-y-1 text-sm sm:text-base'>
           <p>Manila City, Philippines</p>
           <p>(63) 0908123453</p>
           <p>contactus@qcsp.com.ph</p>
