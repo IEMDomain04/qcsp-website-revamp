@@ -1,35 +1,66 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 
-
-// Navigation links
 const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Explore', href: '/explore' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+  { name: 'Home', href: '/' },
+  { name: 'Explore', href: '/explore' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 const NavBar = () => {
-    return (
-        <div className='w-full flex justify-between items-center px-40'>
+  const [isOpen, setIsOpen] = useState(false)
 
+  return (
+    <nav className="w-full px-6 md:px-30 py-4 flex justify-between items-center shadow-md relative z-50">
+      {/* Logo */}
+      <Image src="/assets/QCSP.svg" alt="Logo" width={400} height={100} />
 
-            {/* Logo */}
-            <Image src="/assets/QCSP.svg" alt="Logo" width={400} height={300} />
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex space-x-12">
+        {navLinks.map((link) => (
+          <a
+            key={link.name}
+            href={link.href}
+            className="border-b border-transparent hover:border-yellow-400 hover:text-yellow-400 duration-300"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
 
+      {/* Hamburger Button */}
+      <div className="md:hidden">
+        <button
+          className="flex flex-col space-y-1.5"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
+        >
+          <span className="block w-6 h-0.5 bg-white"></span>
+          <span className="block w-6 h-0.5 bg-white"></span>
+          <span className="block w-6 h-0.5 bg-white"></span>
+        </button>
+      </div>
 
-            {/* Navigation Links */}
-            <div className='flex space-x-20'>
-                {navLinks.map((link) => (
-                    <a key={link.name} href={link.href} className="border-b border-transparent hover:border-yellow-400 duration-300 hover:text-yellow-400">
-                        {link.name}
-                    </a>
-                ))}
-
-
-            </div>
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="absolute top-full left-0 w-full px-6 py-4 shadow-md flex flex-col space-y-4 md:hidden">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="border-b border-transparent hover:border-yellow-400 hover:text-yellow-400 duration-300"
+            >
+              {link.name}
+            </a>
+          ))}
         </div>
-    )
+      )}
+    </nav>
+  )
 }
 
 export default NavBar
