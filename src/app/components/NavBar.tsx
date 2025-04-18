@@ -14,7 +14,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="w-full px-6 md:px-30 py-4 flex justify-between items-center shadow-md relative z-50">
+    <nav className="w-full pl-15 md:px-30 py-4 flex justify-between items-center shadow-md relative z-50 max-sm:flex-row-reverse">
       {/* Logo */}
       <Image src="/assets/QCSP.svg" alt="Logo" width={400} height={100} />
 
@@ -46,7 +46,7 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full px-6 py-4 shadow-md flex flex-col space-y-4 md:hidden">
+        <div className="absolute top-full left-0 w-full bg-primary/20 bg-opacity-50 px-6 py-4 shadow-md flex flex-col space-y-4 md:hidden">
           {navLinks.map((link) => (
             <a
               key={link.name}
