@@ -1,9 +1,188 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { Atom, Lightbulb, Users, Globe, BookOpen, Rocket } from "lucide-react"
+import { Calendar, GraduationCap, Laptop, FlaskRoundIcon as Flask, Award } from "lucide-react" // Import users kapag nilipat
+import type * as THREE from "three"
+import { Canvas, useFrame } from "@react-three/fiber"
 import { motion } from "framer-motion";
+
+function AtomModel() {
+  const groupRef = useRef<THREE.Group>(null)
+  const electronRef1 = useRef<THREE.Mesh>(null)
+  const electronRef2 = useRef<THREE.Mesh>(null)
+  const electronRef3 = useRef<THREE.Mesh>(null)
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime()
+
+    if (groupRef.current) {
+      groupRef.current.rotation.y = t * 0.1
+    }
+
+    if (electronRef1.current) {
+      electronRef1.current.position.x = Math.sin(t * 0.8) * 1.2
+      electronRef1.current.position.z = Math.cos(t * 0.8) * 1.2
+    }
+
+    if (electronRef2.current) {
+      electronRef2.current.position.x = Math.sin(t * 0.8 + 2) * 1.2
+      electronRef2.current.position.z = Math.cos(t * 0.8 + 2) * 1.2
+    }
+
+    if (electronRef3.current) {
+      electronRef3.current.position.x = Math.sin(t * 0.8 + 4) * 1.2
+      electronRef3.current.position.z = Math.cos(t * 0.8 + 4) * 1.2
+    }
+  })
+
+  return (
+    <group ref={groupRef}>
+      {/* Nucleus */}
+      <mesh>
+        <sphereGeometry args={[0.3, 32, 32]} />
+        <meshStandardMaterial color="#6366f1" />
+      </mesh>
+
+      {/* Electrons */}
+      <mesh ref={electronRef1}>
+        <sphereGeometry args={[0.1, 16, 16]} />
+        <meshStandardMaterial color="#60a5fa" emissive="#60a5fa" emissiveIntensity={0.5} />
+      </mesh>
+
+      <mesh ref={electronRef2}>
+        <sphereGeometry args={[0.1, 16, 16]} />
+        <meshStandardMaterial color="#60a5fa" emissive="#60a5fa" emissiveIntensity={0.5} />
+      </mesh>
+
+      <mesh ref={electronRef3}>
+        <sphereGeometry args={[0.1, 16, 16]} />
+        <meshStandardMaterial color="#60a5fa" emissive="#60a5fa" emissiveIntensity={0.5} />
+      </mesh>
+
+      {/* Electron paths (rings) */}
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[1.2, 0.02, 16, 100]} />
+        <meshStandardMaterial color="#4f46e5" transparent opacity={0.3} />
+      </mesh>
+
+      <mesh rotation={[Math.PI / 3, Math.PI / 4, 0]}>
+        <torusGeometry args={[1.2, 0.02, 16, 100]} />
+        <meshStandardMaterial color="#4f46e5" transparent opacity={0.3} />
+      </mesh>
+    </group>
+  )
+}
+
+const values = [
+  {
+    icon: <Atom className="h-8 w-8 text-accent" />,
+    title: "Scientific Excellence",
+    description: "We uphold the highest standards of scientific rigor and integrity in all our endeavors.",
+  },
+  {
+    icon: <Lightbulb className="h-8 w-8 text-accent" />,
+    title: "Innovation",
+    description: "We embrace creative thinking and novel approaches to quantum challenges.",
+  },
+  {
+    icon: <Users className="h-8 w-8 text-accent" />,
+    title: "Collaboration",
+    description: "We believe in the power of diverse perspectives and interdisciplinary cooperation.",
+  },
+  {
+    icon: <Globe className="h-8 w-8 text-accent" />,
+    title: "Inclusivity",
+    description: "We strive to make quantum science accessible to all Filipinos regardless of background.",
+  },
+  {
+    icon: <BookOpen className="h-8 w-8 text-accent" />,
+    title: "Education",
+    description: "We are committed to continuous learning and knowledge sharing.",
+  },
+  {
+    icon: <Rocket className="h-8 w-8 text-accent" />,
+    title: "Impact",
+    description: "We focus on applications that address real-world challenges facing the Philippines.",
+  },
+]
+
+const partners = [
+  {
+    name: "University of the Philippines",
+    logo: "/placeholder.svg?height=100&width=200",
+    type: "Academic",
+  },
+  {
+    name: "Department of Science and Technology",
+    logo: "/placeholder.svg?height=100&width=200",
+    type: "Government",
+  },
+  {
+    name: "Philippine Institute of Quantum Research",
+    logo: "/placeholder.svg?height=100&width=200",
+    type: "Research",
+  },
+  {
+    name: "QuantumTech Philippines",
+    logo: "/placeholder.svg?height=100&width=200",
+    type: "Industry",
+  },
+  {
+    name: "Asian Quantum Computing Alliance",
+    logo: "/placeholder.svg?height=100&width=200",
+    type: "International",
+  },
+  {
+    name: "Philippine Future Technologies Association",
+    logo: "/placeholder.svg?height=100&width=200",
+    type: "Industry",
+  },
+]
+
+
+const initiatives = [
+  {
+    title: "Quantum Computing Bootcamp",
+    description:
+      "Intensive 2-week training program for students and professionals to learn quantum computing fundamentals.",
+    icon: <Laptop className="h-8 w-8 text-accent" />,
+    status: "Annual Event",
+  },
+  {
+    title: "Philippine Quantum Conference",
+    description:
+      "The country's premier gathering of quantum researchers, featuring keynote speakers from around the world.",
+    icon: <Calendar className="h-8 w-8 text-accent" />,
+    status: "Annual Event",
+  },
+  {
+    title: "Quantum Education Initiative",
+    description: "Developing curriculum materials for high schools and universities to introduce quantum concepts.",
+    icon: <GraduationCap className="h-8 w-8 text-accent" />,
+    status: "Ongoing",
+  },
+  {
+    title: "Quantum Research Grants",
+    description: "Funding opportunities for Filipino researchers working on quantum technologies.",
+    icon: <Award className="h-8 w-8 text-accent" />,
+    status: "Biannual",
+  },
+  {
+    title: "Quantum Hackathon",
+    description: "Competition challenging participants to solve real-world problems using quantum algorithms.",
+    icon: <Users className="h-8 w-8 text-accent" />,
+    status: "Annual Event",
+  },
+  {
+    title: "Quantum Lab Network",
+    description: "Collaborative research infrastructure connecting quantum laboratories across the Philippines.",
+    icon: <Flask className="h-8 w-8 text-accent" />,
+    status: "In Development",
+  },
+]
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -61,32 +240,34 @@ const about = () => {
       {/* Main Content */}
       <div className="flex flex-col w-11/12 lg:w-3/4 space-y-60 mx-auto text-justify">
         {/* About */}
-        <motion.div
-          className="flex flex-col space-y-5"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <h1 className="text-h1 text-secondary font-bold max-sm:text-xl">
-            About
-          </h1>
-          <div className="space-y-10">
-            <p className="text-h4 max-sm:text-sm">
-              Known globally as OneQuantum Philippines, QCSP is the leading
-              community of academics, industry leaders, and quantum enthusiasts.
-              Together, we're building a vibrant quantum ecosystem in the
-              Philippines, fostering collaboration and innovation. Moving the
-              quantum frontier, one qubit at a time.
-            </p>
-            <button
-              className="px-10 py-5 rounded-xl bg-tertiary font-bold cursor-pointer max-sm:text-xs max-sm:p-4 hover:scale-125"
-              type="button"
+        <section id="about" className="py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="space-y-6"
             >
-              See our Team..
-            </button>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">What is QCSP?</h2>
+              <p className="text-lg text-slate-300">
+                Known globally as OneQuantum Philippines, QCSP is the leading
+                community of academics, industry leaders, and quantum enthusiasts.
+                Together, we're building a vibrant quantum ecosystem in the
+                Philippines, fostering collaboration and innovation. Moving the
+                quantum frontier, one qubit at a time.
+              </p>
+            </motion.div>
+
+            <div className="h-[600px]">
+              <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                <ambientLight intensity={0.5} />
+                <pointLight position={[10, 10, 10]} intensity={1} />
+                <AtomModel />
+              </Canvas>
+            </div>
           </div>
-        </motion.div>
+        </section>
 
         {/* Connect Minds */}
         <motion.div
@@ -128,94 +309,166 @@ const about = () => {
         </motion.div>
 
         {/* Vision and Mission */}
-        <motion.div
-          className="flex flex-col lg:flex-row lg:space-x-40 space-y-10 lg:space-y-0"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
-          <div className="space-y-5">
-            <h1 className="text-h1 text-accent font-bold max-sm:text-xl">
-              Vision
-            </h1>
-            <p className="text-h4 max-sm:text-xs">
-              Our vision is to be a global force for good in Quantum Tech and
-              support humanity’s transition into the quantum era in an inclusive
-              way, enabling everyone to contribute, grow and make a positive
-              impact.
-            </p>
-          </div>
+        <section id="mission" className="py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Mission and Vision</h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">Guiding our journey into the quantum future</p>
+          </motion.div>
 
-          <div className="space-y-5">
-            <h1 className="text-h1 text-accent font-bold max-sm:text-xl">
-              Mission
-            </h1>
-            <p className="text-h4 max-sm:text-xs">
-              Our mission it to accomplish this by providing a global community
-              with local chapters, professional mentoring, career opportunities
-              and quantum tech skills.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="bg-slate-800/50 p-8 rounded-xl border border-slate-700"
+            >
+              <h3 className="text-xl font-extrabold text-accent mb-4 leading-tight sm:text-4xl">
+                Our Mission
+              </h3>
+              <p className="text-base text-slate-400 mb-2 sm:text-lg">
+                We bring this vision to life by:
+              </p>
+              <p className="text-lg text-slate-200 sm:text-xl leading-relaxed max-w-3xl">
+                Building a global community through local chapters, empowering individuals with access to
+                mentorship, career pathways, and practical skills in quantum technology—fostering growth, collaboration,
+                and impact worldwide.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="bg-slate-800/50 p-8 rounded-xl border border-slate-700"
+            >
+              <h3 className="text-xl font-extrabold text-accent mb-4 leading-tight sm:text-4xl">
+                Our Vision
+              </h3>
+              <p className="text-base text-slate-400 mb-2 sm:text-lg">
+                We imagine a future where:
+              </p>
+              <p className="text-lg text-slate-200 sm:text-xl leading-relaxed max-w-3xl">
+                Our mission it to accomplish this by providing a global community
+                with local chapters, professional mentoring, career opportunities
+                and quantum tech skills.
+              </p>
+
+            </motion.div>
           </div>
-        </motion.div>
+        </section>
+
+
+        {/* Core Values */}
+        <section id="values" className="py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Core Values</h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">The principles that guide our organization</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-slate-800/30 p-6 rounded-xl border border-slate-700 hover:bg-slate-800/50 transition-colors"
+              >
+                <div className="mb-4">{value.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>
+                <p className="text-slate-300">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
         {/* Partnership */}
-        <motion.div
-          className="flex flex-col-reverse lg:flex-row items-center justify-between space-y-10 lg:space-y-0 lg:space-x-32"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInRight}
-        >
-          <div className="space-y-10">
-            <div className="space-y-5">
-              <h1 className="text-h1 text-secondary font-bold max-sm:text-xl">
-                Partnership
-              </h1>
-              <h2 className="text-h4 italic font-bold max-sm:text-xl">
-                Let's create something together!
-              </h2>
-              <p className="text-h4 max-sm:text-xs">
-                QCSP is open to strategic partnerships that drive innovation and
-                mutual growth. We collaborate with tech companies, research
-                institutions, and industry leaders to build impactful solutions.
-              </p>
-            </div>
-            <button
-              className="px-10 py-5 rounded-xl bg-tertiary font-bold cursor-pointer max-sm:text-xs max-sm:p-4"
-              type="button"
-            >
-              Be a partner..
-            </button>
-          </div>
-
-          <Image
-            src={"/assets/about-icon2.svg"}
-            alt="logo"
-            width={500}
-            height={500}
-            className="max-sm:w-50"
-          />
-        </motion.div>
-
-        {/* Join Us and Contact Us */}
-        <motion.div
-          className="flex flex-col items-center justify-center space-y-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
-          <h1 className="text-h1 font-bold text-accent text-center max-sm:text-xl">
-            Check our social and Contact us!
-          </h1>
-          <button
-            className="text-black px-10 py-5 rounded-xl bg-amber-50 font-bold cursor-pointer max-sm:text-xs max-sm:p-4"
-            type="button"
+        <section id="partnerships" className="py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
           >
-            Contact us
-          </button>
-        </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Partnerships</h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              Collaborating with leading institutions to advance quantum science in the Philippines
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+            {partners.map((partner, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-slate-800/30 p-6 rounded-xl border border-slate-700 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors"
+              >
+                <div className="relative h-20 w-full mb-4">
+                  <Image src={partner.logo || "/placeholder.svg"} alt={partner.name} fill className="object-contain" />
+                </div>
+                <h3 className="text-lg font-medium text-white mb-1">{partner.name}</h3>
+                <p className="text-sm text-accent">{partner.type} Partner</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+
+        {/* Initiatives */}
+        <section id="initiatives" className="py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Initiatives</h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              Programs and projects advancing quantum science in the Philippines
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {initiatives.map((initiative, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-slate-800/30 p-6 rounded-xl border border-slate-700 hover:bg-slate-800/50 transition-colors"
+              >
+                <div className="mb-4">{initiative.icon}</div>
+                <div className="inline-block px-3 py-1 rounded-full bg-indigo-900/50 text-indigo-300 text-xs font-medium mb-3">
+                  {initiative.status}
+                </div>
+                <h3 className="text-h5 font-bold text-white mb-2">{initiative.title}</h3>
+                <p className="text-slate-300">{initiative.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
       </div>
 
       <Footer />
