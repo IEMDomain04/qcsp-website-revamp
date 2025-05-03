@@ -80,7 +80,7 @@ const about = () => {
               quantum frontier, one qubit at a time.
             </p>
             <button
-              className="px-10 py-5 rounded-xl bg-tertiary font-bold cursor-pointer max-sm:text-xs max-sm:p-4"
+              className="px-10 py-5 rounded-xl bg-tertiary font-bold cursor-pointer max-sm:text-xs max-sm:p-4 hover:scale-125"
               type="button"
             >
               See our Team..
