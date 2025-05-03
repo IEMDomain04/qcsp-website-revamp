@@ -184,11 +184,6 @@ const initiatives = [
   },
 ]
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.2 } },
-};
-
 const fadeInLeft = {
   hidden: { opacity: 0, x: -50 },
   visible: { opacity: 1, x: 0, transition: { duration: 1.2 } },
@@ -261,7 +256,7 @@ const about = () => {
 
             <div className="h-[600px]">
               <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-                <ambientLight intensity={0.5} />
+                <ambientLight intensity={1} />
                 <pointLight position={[10, 10, 10]} intensity={1} />
                 <AtomModel />
               </Canvas>
@@ -269,7 +264,7 @@ const about = () => {
           </div>
         </section>
 
-        {/* Connect Minds */}
+        {/* Connect Minds
         <motion.div
           className="flex flex-col lg:flex-row items-center justify-between space-y-5 lg:space-y-0 lg:space-x-32"
           initial="hidden"
@@ -306,7 +301,7 @@ const about = () => {
               </h2>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Vision and Mission */}
         <section id="mission" className="py-16">
