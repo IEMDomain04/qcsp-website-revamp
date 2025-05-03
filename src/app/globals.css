@@ -52,7 +52,8 @@
 }
 
 body {
-  background: url('/assets/qcsp-bg.svg');
+  background: url('https://64.media.tumblr.com/d823abd644fa478fb244bd5a96e4ed12/tumblr_obfjz6Bd9f1runoqyo1_540.gif');
+  background-size: cover;
   color: white;
   font-family: var(--font-nunito-500), Arial, Helvetica, sans-serif;
 }
