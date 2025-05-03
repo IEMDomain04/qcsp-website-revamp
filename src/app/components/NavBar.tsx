@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState } from 'react'
+import Image from 'next/image'
 
 const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Explore", href: "/explore" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-];
+  { name: 'Home', href: '/' },
+  { name: 'Explore', href: '/explore' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+]
 
 const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <nav className="w-full px-10 md:px-30 py-4 flex justify-between items-center shadow-md relative z-50 max-sm:flex-row-reverse">
       {/* Logo */}
-      <div className="max-sm:w-4/5">
+      <div className='max-sm:w-4/5'>
         <Image src="/assets/QCSP.svg" alt="Logo" width={400} height={100} />
       </div>
 
@@ -62,7 +62,7 @@ const NavBar = () => {
         </div>
       )}
     </nav>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
