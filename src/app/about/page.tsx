@@ -235,7 +235,7 @@ const about = () => {
       {/* Main Content */}
       <div className="flex flex-col w-11/12 lg:w-3/4 space-y-60 mx-auto text-justify">
         {/* About */}
-        <section id="about" className="py-16">
+        <section id="about">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -254,7 +254,7 @@ const about = () => {
               </p>
             </motion.div>
 
-            <div className="h-[600px]">
+            <div className="h-[30rem]">
               <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
                 <ambientLight intensity={1} />
                 <pointLight position={[10, 10, 10]} intensity={1} />
@@ -304,7 +304,7 @@ const about = () => {
         </motion.div> */}
 
         {/* Vision and Mission */}
-        <section id="mission" className="py-16">
+        <section id="mission" className="">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -330,7 +330,7 @@ const about = () => {
               <p className="text-base text-slate-400 mb-2 sm:text-lg">
                 We bring this vision to life by:
               </p>
-              <p className="text-lg text-slate-200 sm:text-xl leading-relaxed max-w-3xl">
+              <p className="text-h5 text-slate-200 sm:text-xl leading-relaxed max-w-3xl">
                 Building a global community through local chapters, empowering individuals with access to
                 mentorship, career pathways, and practical skills in quantum technology—fostering growth, collaboration,
                 and impact worldwide.
@@ -350,7 +350,7 @@ const about = () => {
               <p className="text-base text-slate-400 mb-2 sm:text-lg">
                 We imagine a future where:
               </p>
-              <p className="text-lg text-slate-200 sm:text-xl leading-relaxed max-w-3xl">
+              <p className="text-h5 text-slate-200 sm:text-xl leading-relaxed max-w-3xl">
                 Our mission it to accomplish this by providing a global community
                 with local chapters, professional mentoring, career opportunities
                 and quantum tech skills.
@@ -362,7 +362,7 @@ const about = () => {
 
 
         {/* Core Values */}
-        <section id="values" className="py-16">
+        <section id="values">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -382,7 +382,7 @@ const about = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-slate-800/30 p-6 rounded-xl border border-slate-700 hover:bg-slate-800/50 transition-colors"
+                className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:bg-slate-800/50 transition-colors"
               >
                 <div className="mb-4">{value.icon}</div>
                 <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>
@@ -393,7 +393,7 @@ const about = () => {
         </section>
 
         {/* Partnership */}
-        <section id="partnerships" className="py-16">
+        <section id="partnerships">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -415,7 +415,7 @@ const about = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-slate-800/30 p-6 rounded-xl border border-slate-700 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors"
+                className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors"
               >
                 <div className="relative h-20 w-full mb-4">
                   <Image src={partner.logo || "/placeholder.svg"} alt={partner.name} fill className="object-contain" />
@@ -429,7 +429,7 @@ const about = () => {
 
 
         {/* Initiatives */}
-        <section id="initiatives" className="py-16">
+        <section id="initiatives">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -451,7 +451,7 @@ const about = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-slate-800/30 p-6 rounded-xl border border-slate-700 hover:bg-slate-800/50 transition-colors"
+                className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:bg-slate-800/50 transition-colors"
               >
                 <div className="mb-4">{initiative.icon}</div>
                 <div className="inline-block px-3 py-1 rounded-full bg-indigo-900/50 text-indigo-300 text-xs font-medium mb-3">
