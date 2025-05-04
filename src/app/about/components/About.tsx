@@ -73,7 +73,7 @@ function AtomModel() {
 
 const About = () => {
     return (
-        <section id="about">
+        <section id="about" className="-mt-50">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
@@ -92,7 +92,7 @@ const About = () => {
                     </p>
                 </motion.div>
 
-                <div className="h-[30rem]">
+                <div className="h-[50rem]">
                     <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
                         <ambientLight intensity={1} />
                         <pointLight position={[10, 10, 10]} intensity={1} />

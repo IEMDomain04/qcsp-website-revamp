@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const vision_mission = () => {
     return (
-        <section id="mission" className="">
+        <section id="mission" className="-mt-50">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
