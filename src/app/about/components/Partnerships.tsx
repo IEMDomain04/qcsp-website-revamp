@@ -5,33 +5,18 @@ import { motion } from 'framer-motion'
 const partners = [
     {
       name: "University of the Philippines",
-      logo: "/placeholder.svg?height=100&width=200",
+      logo: "/assets/partners/up.png",
       type: "Academic",
     },
     {
       name: "Department of Science and Technology",
-      logo: "/placeholder.svg?height=100&width=200",
+      logo: "/assets/partners/dost.png",
       type: "Government",
     },
     {
-      name: "Philippine Institute of Quantum Research",
-      logo: "/placeholder.svg?height=100&width=200",
-      type: "Research",
-    },
-    {
-      name: "QuantumTech Philippines",
-      logo: "/placeholder.svg?height=100&width=200",
-      type: "Industry",
-    },
-    {
-      name: "Asian Quantum Computing Alliance",
-      logo: "/placeholder.svg?height=100&width=200",
-      type: "International",
-    },
-    {
-      name: "Philippine Future Technologies Association",
-      logo: "/placeholder.svg?height=100&width=200",
-      type: "Industry",
+      name: "Department of Science and Technology",
+      logo: "/assets/partners/dost.png",
+      type: "Government",
     },
   ]
 
