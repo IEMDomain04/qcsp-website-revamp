@@ -8,6 +8,7 @@ import Vision_Mission from "./components/Vision-Mission";
 import Core_Values from "./components/Core-Values";
 import Partnerships from "./components/Partnerships";
 import Initiatives from "./components/Initiatives";
+import Teams from "./components/Teams";
 
 const fadeInLeft = {
   hidden: { opacity: 0, x: -50 },
@@ -66,17 +67,17 @@ const about = () => {
         {/* Vision and Mission */}
         <Vision_Mission />
 
-
         {/* Core Values */}
         <Core_Values />
 
+        {/* Initiatives */}
+        <Initiatives />
+
+        {/* Teams */}
+        <Teams />
 
         {/* Partnership */}
         <Partnerships />
-
-
-        {/* Initiatives */}
-        <Initiatives />
       </div>
 
       <Footer />
