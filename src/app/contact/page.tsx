@@ -52,7 +52,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-slate-800/50 p-8 mx-50 rounded-xl border border-slate-700"
+            className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 mx-5 lg:mx-50"
           >
             <h3 className="text-xl font-extrabold text-accent mb-6 leading-tight sm:text-3xl">
               Send Us a Message
@@ -124,8 +124,8 @@ const Contact = () => {
             <h3 className="text-xl font-extrabold text-accent mb-6 leading-tight sm:text-3xl">
               Connect With Us
             </h3>
-            <div className="flex justify-around items-center space-y-6">
 
+            <div className="justify-around items-center space-y-10 lg:flex">
 
               <div className="flex space-x-4">
                 <Mail className="text-accent w-6 h-6 mt-1" />
