@@ -1,78 +1,183 @@
-import React from "react";
-import Image from "next/image";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+'use client'
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, Facebook } from 'lucide-react'
+import NavBar from '../components/NavBar'
+import Footer from '../components/Footer'
 
-const socials = [
-  {
-    name: "Facebook",
-    href: "",
-    src: "/assets/socials/fb.svg",
-  },
-  {
-    name: "Instagram",
-    href: "",
-    src: "/assets/socials/ig.svg",
-  },
-  {
-    name: "Twitter",
-    href: "",
-    src: "/assets/socials/x-twitter.svg",
-  },
-  {
-    name: "YouTube",
-    href: "",
-    src: "/assets/socials/yt.svg",
-  },
-];
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-const contacts = () => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    // Reset form after submission
+    setFormData({ name: '', email: '', message: '' });
+    // Show success message or redirect
+  };
+
   return (
-    <div>
+    <>
       <NavBar />
+      <section id="contact">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Contact Us</h2>
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto">Please send your message to Quantum Computing Society of the Philippines. We will reply as soon as possible!</p>
+        </motion.div>
 
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row items-center justify-between px-10 lg:px-30 mb-32 space-y-10 lg:space-y-0">
-        <div className="max-sm:w-60">
-          <Image
-            src="/assets/qcsp-icon-animation.gif"
-            alt="logo"
-            width={500}
-            height={500}
-          />
-        </div>
-        <div className="w-full lg:w-1/2">
-          <h1 className="text-h1 font-bold mb-10 text-center lg:text-left max-sm:text-xl">
-            Contact us
-          </h1>
-          <h2 className="text-h2 font-semibold italic text-secondary text-center lg:text-left max-sm:text-lg">
-            "Driving Change Together"
-          </h2>
-        </div>
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
 
-      <div className="flex justify-center gap-30 bg-blue-50/50 py-10">
-        {socials.map((social) => (
-          <a
-            className="duration-300 rounded-4xl hover:scale-105 hover:shadow-2xl"
-            key={social.name}
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-slate-800/50 p-8 mx-50 rounded-xl border border-slate-700"
           >
-            <Image
-              src={social.src}
-              alt={social.name}
-              width={100}
-              height={100}
-            />
-          </a>
-        ))}
-      </div>
+            <h3 className="text-xl font-extrabold text-accent mb-6 leading-tight sm:text-3xl">
+              Send Us a Message
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-accent"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-accent"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-accent"
+                  placeholder="Your message..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-accent hover:bg-accent/80 text-black font-medium py-3 px-6 rounded-lg transition-all duration-300"
+              >
+                Send Message
+              </button>
+            </form>
+          </motion.div>
 
-      <Footer />
-    </div>
-  );
-};
 
-export default contacts;
+          {/* Socials and Contacts */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="bg-black/50 p-8 mx-20"
+          >
+            <h3 className="text-xl font-extrabold text-accent mb-6 leading-tight sm:text-3xl">
+              Connect With Us
+            </h3>
+            <div className="flex justify-around items-center space-y-6">
+
+
+              <div className="flex space-x-4">
+                <Mail className="text-accent w-6 h-6 mt-1" />
+                <div>
+                  <h4 className="text-lg font-medium text-white">Email</h4>
+                  <p className="text-slate-300">info@yourcompany.com</p>
+                </div>
+              </div>
+
+
+              <div className="flex space-x-4">
+                <Phone className="text-accent w-6 h-6 mt-1" />
+                <div>
+                  <h4 className="text-lg font-medium text-white">Phone</h4>
+                  <p className="text-slate-300">+1 (555) 123-4567</p>
+                </div>
+              </div>
+
+
+              <div className="flex space-x-4">
+                <MapPin className="text-accent w-6 h-6 mt-1" />
+                <div>
+                  <h4 className="text-lg font-medium text-white">Location</h4>
+                  <p className="text-slate-300">123 Quantum Avenue, Tech City, TC 98765</p>
+                </div>
+              </div>
+
+
+              <div>
+                <h4 className="text-lg font-medium text-white mb-4">Follow Us</h4>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-slate-400 hover:text-accent transition-colors duration-300">
+                    <Twitter className="w-6 h-6" />
+                  </a>
+                  <a href="#" className="text-slate-400 hover:text-accent transition-colors duration-300">
+                    <Linkedin className="w-6 h-6" />
+                  </a>
+                  <a href="#" className="text-slate-400 hover:text-accent transition-colors duration-300">
+                    <Instagram className="w-6 h-6" />
+                  </a>
+                  <a href="#" className="text-slate-400 hover:text-accent transition-colors duration-300">
+                    <Facebook className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+        <Footer />
+      </section>
+    </>
+  )
+}
+
+export default Contact
