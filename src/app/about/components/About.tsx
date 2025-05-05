@@ -80,7 +80,7 @@ const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="space-y-6"
+                    className="space-y-6 mx-5 lg:mx-0"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-white">What is QCSP?</h2>
                     <p className="text-lg text-slate-300">
